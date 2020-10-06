@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/*"
+    "workspace/*"
   ],
   "version": "0.0.0"
 }
