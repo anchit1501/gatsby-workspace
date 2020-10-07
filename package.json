@@ -6,6 +6,9 @@
       "workspace/*"
     ]
   },
+  "scripts": {
+    "build": "yarn workspace wordpress build:incrimental"
+  },
   "devDependencies": {
     "lerna": "^3.21.0"
   }
