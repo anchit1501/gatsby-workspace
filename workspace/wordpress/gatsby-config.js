@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -35,8 +39,7 @@ module.exports = {
         fieldName: `wpgraphql`,
         url:
           // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
-          process.env.WPGRAPHQL_URL ||
-          `http://localhost/web1/graphql`,
+          process.env.GATSBY_WPGRAPHQL_URL,
         schema: {
           //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
           typePrefix: `Wp`,
