@@ -10,7 +10,7 @@ const About = ({ pageContext }) => {
     console.log('context', pageContext)
     return (
         <Layout>
-            <SEO title="Page two" />
+            <SEO title={title} />
             <h1>{title}</h1>
             <div dangerouslySetInnerHTML={{ __html: content }} />
         </Layout>)

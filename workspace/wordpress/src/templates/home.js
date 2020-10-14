@@ -7,13 +7,13 @@ import SEO from "../components/seo"
 import Post from '../posts/index';
 import { postData } from '../fragments/post';
 
-const IndexPage = ({ data }) => (
+const Home = ({ data }) => (
   <Layout>
     {data.allWpPost.edges.map(k => <Post post={k.node} key={k.node.title} />)}
   </Layout>
 )
 
-export default IndexPage
+export default Home
 
 export const query = graphql`
   query 

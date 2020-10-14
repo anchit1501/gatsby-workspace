@@ -1,3 +1,4 @@
+const templateHandler = require('./utils');
 const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -17,16 +18,24 @@ exports.createPages = ({ graphql, actions }) => {
 
   `).then(result => {
     result.data.allWpPage.edges.forEach(({ node }) => {
-      console.log('node', node)
       createPage({
         path: node.slug,
-        component: path.resolve(`./src/templates/${node.slug}.js`),
+        component: path.resolve(templateHandler(node.slug)),
         context: {
           slug: node.slug,
           title: node.title,
           content: node.content
         },
       })
+      //   createPage({
+      //     path: node.slug,
+      //     component: path.resolve(`./src/templates/${node.slug}.js`),
+      //     context: {
+      //       slug: node.slug,
+      //       title: node.title,
+      //       content: node.content
+      //     },
+      //   })
     })
   }
   )
