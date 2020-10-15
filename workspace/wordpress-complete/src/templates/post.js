@@ -4,7 +4,7 @@ import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 
 
-const Post = ({ pageContext }) => {
+export default ({ pageContext }) => {
 
     const post = pageContext.post
 
@@ -18,5 +18,3 @@ const Post = ({ pageContext }) => {
         </Layout>
     )
 }
-
-export default Post
