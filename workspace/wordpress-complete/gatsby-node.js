@@ -1,7 +1,7 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+const createPages = require("./create/create-page")
+// const createPosts = require("./create/create-post")
 
-// You can delete this file if you're not using it
+exports.createPagesStatefully = async ({ graphql, actions, reporter }, options) => {
+    await createPages({ actions, graphql, reporter }, options)
+    // await createPosts({ actions, graphql, reporter }, options)
+}
