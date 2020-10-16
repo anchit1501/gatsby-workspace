@@ -1,15 +1,12 @@
 const Page = require.resolve("../src/templates/post.js")
-const { PostData } = require('../src/fragments/post.js')
-// const fragments = await collectGraphQLFragments(
-//     resolve(__dirname, "src/fragments"),
-//     ["PostData"]
-// );
+const { PostDataFragment } = require('../src/fragments/post.js')
+
 const GET_PAGES = `
-${PostData}
+${PostDataFragment}
 query 
   {
       allWpPost {
-        ...PostData
+        ...PostDataFragment
         }
   
 }`
@@ -49,8 +46,6 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
              * Extract the data from the GraphQL query results
              */
 
-
-            console.log('data', JSON.stringify(data))
             const edges = data.allWpPost.edges
 
             /**
@@ -80,9 +75,7 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
      * the pages we need to create individual pages.
      */
     await fetchPost({ first: itemsPerPost, after: null }).then((wpPosts) => {
-        // console.log('query page data', wpPosts)
         wpPosts && wpPosts.map((post) => {
-            // console.log('map post ', post)
             let postPath = `post/${post.slug}`
 
             /**

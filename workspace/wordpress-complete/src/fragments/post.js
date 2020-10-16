@@ -1,5 +1,5 @@
-const PostData = `
-  fragment PostData on WpPostConnection {
+const PostDataFragment = `
+  fragment PostDataFragment on WpPostConnection {
         edges {
           node {
             content
@@ -9,4 +9,4 @@ const PostData = `
         }
   }`
 
-module.exports.PostData = PostData
+module.exports.PostDataFragment = PostDataFragment

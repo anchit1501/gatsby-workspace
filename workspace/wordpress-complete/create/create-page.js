@@ -1,13 +1,16 @@
 const Page = require.resolve("../src/templates/page.js")
-
+const { GatsbyImageSharpFluid_srcSetWebp } = require("../src/fragments/srcSetWp.js")
+const { PageTemplateFragment } = require("../src/fragments/page.js")
+const { FeaturedImageFragment } = require('../src/fragments/featuredImage')
 const GET_PAGES = `
+${PageTemplateFragment}
+${GatsbyImageSharpFluid_srcSetWebp}
+${FeaturedImageFragment}
 {
     allWpPage {
         edges {
           node {
-            title
-            content
-            slug
+            ...PageTemplateFragment
           }
         }
       }
@@ -15,7 +18,7 @@ const GET_PAGES = `
 `
 
 const allPages = []
-let pageNumber = 0
+// let pageNumber = 0
 const itemsPerPage = 10
 
 /**
@@ -48,17 +51,6 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
             /**
              * Extract the data from the GraphQL query results
              */
-
-            // console.log('query page', JSON.stringify(data))
-            // const {
-            //     allWpPage: {
-            //         edges: {
-            //             node
-            //             // ,
-            //             // pageInfo: { hasNextPage, endCursor },
-            //         },
-            //     },
-            // } = data
 
             const edges = data.allWpPage.edges
 
@@ -93,9 +85,7 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
      * the pages we need to create individual pages.
      */
     await fetchPages({ first: itemsPerPage, after: null }).then((wpPages) => {
-        // console.log('query page data', wpPages)
         wpPages && wpPages.map((page) => {
-            console.log('map page ', page)
             let pagePath = `${page.slug}`
 
             /**
