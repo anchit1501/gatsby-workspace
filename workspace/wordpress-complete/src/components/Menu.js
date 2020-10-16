@@ -24,7 +24,6 @@ const Menu = () => {
         <StaticQuery
             query={MENU_QUERY}
             render={(data) => {
-                console.log('data', data)
                 if (data.allWpMenuItem.nodes) {
                     const menuItems = data.allWpMenuItem.nodes
 

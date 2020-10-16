@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 
 
 export default ({ pageContext }) => {
-    console.log('pot', pageContext)
     const post = pageContext.post
 
     return (
