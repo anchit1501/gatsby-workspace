@@ -1,11 +1,11 @@
 import React from "react"
 
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 
 export default ({ pageContext }) => {
-
+    console.log('pot', pageContext)
     const post = pageContext.post
 
     return (

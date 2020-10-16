@@ -1,11 +1,12 @@
-export const postData = graphql`
+const PostData = `
   fragment PostData on WpPostConnection {
         edges {
           node {
             content
             slug
             title
-            ...ImageData
           }
         }
   }`
+
+module.exports.PostData = PostData
